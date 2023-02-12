@@ -19,7 +19,7 @@ export default class GameBoard{
                 [0,0,0,0],
                 [0,0,0,0],
                 [0,0,0,0]
-            ]
+            ];
 
     #acceptedKey = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "KeyX"];
 
