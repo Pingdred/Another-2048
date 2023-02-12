@@ -1,0 +1,21 @@
+:root{
+    --backgroud: #FAF8EF;
+    --brown-light:#CDC1B4;
+    --brown-medium: #BBADA0;
+    --brown-dark: #776E65;
+
+    /* Tile color */
+    --tile-2: #EEE4DA;
+    --tile-4: #EEE1C9;
+    --tile-8: #F3B27A;
+    --tile-16: #F69664;
+    --tile-32: #F77C5F;
+    --tile-64: #F75F3B;
+    --tile-128: #EDD073;
+    --tile-256: #EDCC62;
+    --tile-512: #EDC950;
+    --tile-1024: #EDC53F;
+    --tile-2048: #E0BA00;
+    --tile: #3D3A34;
+
+}

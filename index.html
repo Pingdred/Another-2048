@@ -1,0 +1,53 @@
+<!doctype html>
+
+<html lang="it">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>2048</title>
+
+    <link rel="icon" href="img/favicon/favicon.png">
+    <link rel="stylesheet" href="css/gameBoard.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <script type="module">
+        import GameBoard from "./js/GameBoard.js";
+        import GameEngine from "./js/GameEngine.js";
+
+        let game = new GameEngine(4,4);
+
+        function test(cmd){
+            let str  = "{ \"gameGrid\": [[1,0,0,0],[1,0,0,0],[0,0,0,0],[0,0,0,0]],\"score\": 0, \"gameOver\": false }";
+            return str;
+        }
+
+        let gameBoard = new GameBoard("game-board", 4,4, test);
+
+    </script>
+
+</head>
+
+<body>
+    <main>
+        <div class="content">
+
+            <div id="game-board">
+
+            </div>
+
+            <p>
+                <b>COME SI GIOCA:</b> Usa i tasti freccia per spostare le tessere. Le tessere con lo  stesso numero si fondono in una quando si toccano.
+                Raggiungi la tessera da <b>2048</b> per vincere!
+            </p>
+            <p>
+                <b>COMANDI:</b> Puoi usare i tasti freccia o <b>WASD</b> per spostare le tessere.
+                Per annullare l'ultima mossa fatta puoi usare il tasto <b>Undo</b> oppure premere <b>x</b>.
+            </p>
+            <p>
+                Il gioco è basato su quello sviluppato da <a href="https://it.wikipedia.org/wiki/2048_(videogioco)">Gabriele Cirulli</a>, puoi giocare al gioco originale <a href="https://play2048.co">qui</a>.
+            </p>
+        </div>
+    </main>
+</body>
+</html>

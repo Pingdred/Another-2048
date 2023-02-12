@@ -1,0 +1,182 @@
+@import "colors.css";
+
+:root{
+    --row: 4;
+    --column: 4;
+    --max-width: 70vmin;
+    --gap: calc(7vmin/var(--row));
+    --tile-size: calc((var(--max-width)/var(--row) - var(--gap) ) - var(--gap) );
+}
+
+#game-board{
+    max-width: var(--max-width);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+#game-board-top{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
+
+#game{
+    display: grid;
+    grid-template-columns: repeat(var(--column), var(--tile-size));
+    grid-template-rows: repeat(var(--row), var(--tile-size));
+    padding: var(--gap);
+    background-color: var(--brown-medium);
+    border-radius: 3px;
+    gap: var(--gap);
+    position: relative;
+}
+
+#game-board-bottom{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
+
+#game-board-bottom button{
+    width: 17vh;
+    height: 5vh;
+    margin: 3vmin;
+    border: 0;
+    border-radius: 3px;
+
+    background-color: var(--brown-dark);
+    color: white;
+
+    font-weight: bold;
+    font-family: sans-serif;
+    text-align: center;
+    font-size: large;
+
+    cursor: pointer;
+}
+
+#game-board-bottom button:hover{
+    opacity: 0.8;
+}
+ 
+.cell{
+    background-color: var(--brown-light);
+    border-radius: 3px;
+}
+
+.tile{
+    --x: 0;
+    --y: 0;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--tile-size);
+    height: var(--tile-size);
+    border-radius: 3px;
+    top: calc(var(--x) * (var(--tile-size) + var(--gap)) + var(--gap));
+    left: calc(var(--y) * (var(--tile-size) + var(--gap)) + var(--gap));
+    font-weight: bold;
+    font-size: calc(35vmin/var(--row));
+    animation: show 150ms ease-in-out;
+}
+
+.tile-2{
+    color: var(--brown-dark);
+    background-color: var(--tile-2);
+}
+
+.tile-4{
+    color: var(--brown-dark);
+    background-color: var(--tile-4);
+}
+
+.tile-8{
+    color: white;
+    background-color: var(--tile-8);
+}
+
+.tile-16{
+    color: white;
+    background-color: var(--tile-16);
+}
+
+.tile-32{
+    color: white;
+    background-color: var(--tile-32);
+}
+
+.tile-64{
+    color: white;
+    background-color: var(--tile-64);
+}
+
+.tile-128{
+    font-size: calc(30vmin/var(--row));
+    color: white;
+    background-color: var(--tile-128);
+}
+
+.tile-256{
+    font-size: calc(30vmin/var(--row));
+    color: white;
+    background-color: var(--tile-256);
+}
+
+.tile-512{
+    font-size: calc(30vmin/var(--row));
+    color: white;
+    background-color: var(--tile-512);
+}
+
+.tile-1024{
+    font-size: calc(25vmin/var(--row));
+    color: white;
+    background-color: var(--tile-1024);
+}
+
+.tile-2048{
+    font-size: calc(30vmin/var(--row));
+    color: white;
+    background-color: var(--tile-2048);
+}
+
+#gameFinished{
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(238, 228, 218, 0.73);
+    z-index: 100;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    animation: show 200ms ease-in-out;
+}
+
+/*
+@keyframes show{
+    0% {
+        opacity: .5;
+        transform: scale(0);
+    }
+}
+*/
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    :root{
+        --max-width: 100vmin;
+    }
+
+    #game-board-bottom button{
+        font-size: large;
+    }
+}
