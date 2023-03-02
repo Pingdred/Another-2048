@@ -140,7 +140,7 @@
 }
 
 .tile-2048{
-    font-size: calc(30vmin/var(--row));
+    font-size: calc(25vmin/var(--row));
     color: white;
     background-color: var(--tile-2048);
 }
