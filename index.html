@@ -11,21 +11,6 @@
     <link rel="stylesheet" href="css/gameBoard.css">
     <link rel="stylesheet" href="css/main.css">
 
-    <script type="module">
-        import GameBoard from "./js/GameBoard.js";
-        import GameEngine from "./js/GameEngine.js";
-
-        let game = new GameEngine(4,4);
-
-        function test(cmd){
-            let str  = "{ \"gameGrid\": [[1,0,0,0],[1,0,0,0],[0,0,0,0],[0,0,0,0]],\"score\": 0, \"gameOver\": false }";
-            return str;
-        }
-
-        let gameBoard = new GameBoard("game-board", 4,4, test);
-
-    </script>
-
 </head>
 
 <body>
@@ -50,4 +35,12 @@
         </div>
     </main>
 </body>
+<script src="./js/GameBoard.js"></script>
+<script src="./js/GameEngine.js"></script>
+<script>
+    let game = new GameEngine();
+    let gameBoard = new GameBoard("game-board", 4, 4, game.getCurrentState());
+</script>
+<script src="./js/game.js"></script>
+<script src="./js/event.js"></script>
 </html>
