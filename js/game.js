@@ -7,7 +7,7 @@ function resolve(depth = 6) {
         return;
     }
 
-    let action = min_max(currentState.grid, depth, smoothness);
+    let action = min_max(currentState.grid, depth, monotonicity);
     gameBoard.update(game.update(actions[action.move]));
 }
 
@@ -131,32 +131,6 @@ function expandMinimizing(gameState) {
 
 
     return childs;
-}
-
-function smoothness(gameState) {
-    let smoothnessScore = 0;
-
-    for (let i = 0; i < 4; i++) {
-        for (let j = 0; j < 4; j++) {
-            if (gameState[i][j] !== 0) {
-                let currentValue = Math.log2(gameState[i][j]);
-
-                // Check the neighboring cells to the right
-                if (j < 3 && gameState[i][j + 1] !== 0) {
-                    let neighborValue = Math.log2(gameState[i][j + 1]);
-                    smoothnessScore -= Math.abs(currentValue - neighborValue);
-                }
-
-                // Check the neighboring cells below
-                if (i < 3 && gameState[i + 1][j] !== 0) {
-                    let neighborValue = Math.log2(gameState[i + 1][j]);
-                    smoothnessScore -= Math.abs(currentValue - neighborValue);
-                }
-            }
-        }
-    }
-
-    return smoothnessScore;
 }
 
 function monotonicity(gameState) {
