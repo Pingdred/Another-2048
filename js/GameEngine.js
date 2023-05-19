@@ -12,7 +12,7 @@
  * @property {Array<Array<number>>} prevGrid - The previous game grid.
  * @property {number} score - The game score.
  * @property {MaxTile} maxTile - An object with 'value', 'row' and 'column' properties representing the tile with the highest value. 
- * @property {boolean} gameOver - True if no more action can be taken, false otherwise.
+ * @property {boolean} isGameOver - True if no more action can be taken, false otherwise.
  */
 
 /**
@@ -53,8 +53,8 @@ class GameEngine {
 
         this.#stateHistory = [];
 
-        this.randomTile(this.#grid);
-        this.randomTile(this.#grid);
+        this.#randomTile(this.#grid);
+        this.#randomTile(this.#grid);
     }
 
     /**
@@ -159,6 +159,31 @@ class GameEngine {
     }
 
     /**
+     * Add two random tiles to the grid, 
+     * the tiles have a 90 percent chance of having value 2 
+     * and 10 percent chance of having value 4.
+     * 
+     * @param {Array<Array<number>>} grid - The game grid.
+     * @returns {boolean} True if the grid is not full, False otherwise.
+     */
+    #randomTile(grid) {
+
+        let emptyCells = this.getEmptyCells(grid);
+
+        if (emptyCells.length <= 0) {
+            return false;
+        }
+
+        let index = Math.floor(Math.random() * (emptyCells.length));
+        let cell = emptyCells[index]
+        let value = Math.random() < 0.9 ? 2 : 4;
+
+        grid[cell.row][cell.column] = value;
+
+        return true;
+    }
+
+    /**
      * Set the max history length
      * 
      * @param {Array<Array<number>>} grid - The max history length.
@@ -174,7 +199,7 @@ class GameEngine {
     }
 
     /**
-     * @returns {GameState} A game state with properties 'grid', 'prevGrid', 'score', 'maxTile', 'gameOver'.
+     * @returns {GameState} A game state with properties 'grid', 'prevGrid', 'score', 'maxTile', 'isGameOver'.
      */
     getCurrentState() {
 
@@ -183,7 +208,7 @@ class GameEngine {
             prevGrid: this.#getHistoryLastElement(),
             score: this.getScore(this.#grid),
             maxTile: this.getMaxTile(this.#grid),
-            gameOver: this.isGameOver(this.#grid)
+            isGameOver: this.isGameOver(this.#grid)
         };
 
     }
@@ -192,7 +217,7 @@ class GameEngine {
      * Perform the action on the internal game grid and update the state history.
      * 
      * @param {Array<Array<number>>} action - The action to perform, the accepted ones are ArrowLeft, ArrowRight, ArrowUp, ArrowDown, Undo, NewGame.
-     * @returns {GameState} The nwe game state with properties 'grid', 'prevGrid', 'score', 'maxTile', 'gameOver'.
+     * @returns {GameState} The new game state with properties 'grid', 'prevGrid', 'score', 'maxTile', 'isGameOver'.
      */
     update(action) {
 
@@ -228,7 +253,7 @@ class GameEngine {
         }
 
         if (newState) {
-            this.randomTile(this.#grid);
+            this.#randomTile(this.#grid);
             this.#historyPush(JSON.parse(oldGrid));
         }
 
@@ -251,31 +276,6 @@ class GameEngine {
         }
 
         return emptyCells;
-    }
-
-    /**
-     * Add two random tiles to the grid, 
-     * the tiles have a 90 percent chance of having value 2 
-     * and 10 percent chance of having value 4.
-     * 
-     * @param {Array<Array<number>>} grid - The game grid.
-     * @returns {boolean} True if the grid is not full, False otherwise.
-     */
-    randomTile(grid) {
-
-        let emptyCells = this.getEmptyCells(grid);
-
-        if (emptyCells.length <= 0) {
-            return false;
-        }
-
-        let index = Math.floor(Math.random() * (emptyCells.length));
-        let cell = emptyCells[index]
-        let value = Math.random() < 0.9 ? 2 : 4;
-
-        grid[cell.row][cell.column] = value;
-
-        return true;
     }
 
     /**
