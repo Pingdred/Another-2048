@@ -12,8 +12,6 @@ In this implementation, the Minimax algorithm uses the concept of monotonicity a
 
 ## How to Play
 
-The game is playable on [github-pages](https://sirius-0.github.io/2048/). Use the **arrow keys** on the keyboard to move the tiles in the corresponding direction (up, down, left, or right) and the **x** key to undo up to the third last move made.
+The game is playable on [github-pages](https://sirius-0.github.io/Another-2048/). Use the **arrow keys** on the keyboard to move the tiles in the corresponding direction (up, down, left, or right) and the **x** key to undo up to the third last move made.
 
-To start the resolution, press the **s** key and the **p** key to pause it.
-
-The game will continue until there are no possible moves left.
+To start the resolution, press the **s** key and the **p** key t until there are no possible moves left.
