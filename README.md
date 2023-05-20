@@ -1,4 +1,4 @@
-# 2048 Game
+# Another 2048 Game
 
 This repository contains a copy of the game 2048, originally created by Gabriele Cirulli (which is a copy of the 1024 game). The game is implemented in JavaScript and includes an implementation of the Minimax algorithm with Alpha-Beta pruning for solving the game. The Minimax algorithm utilizes the concept of monotonicity as the evaluation function.
 
